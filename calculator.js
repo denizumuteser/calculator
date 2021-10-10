@@ -1,3 +1,7 @@
+//to-do
+//add decimal support
+//add digit limit
+
 let lowertext = document.querySelector("#lower-text");
 let uppertext = document.querySelector("#upper-text");
 let currentOperator = "";
@@ -69,6 +73,48 @@ function undo()
         firstNumber = temp;
     }
 }
+
+document.addEventListener('keydown', (e) => {
+    //console.log(e.key);
+    switch (e.key) {
+        case "1":
+            return handleNumber(1);
+        case "2":
+            return handleNumber(2);
+        case "3":
+            return handleNumber(3);
+        case "4":
+            return handleNumber(4);
+        case "5":
+            return handleNumber(5);
+        case "6":
+            return handleNumber(6);
+        case "7":
+            return handleNumber(7);
+        case "8":
+            return handleNumber(8);
+        case "9":
+            return handleNumber(9);
+        case "0":
+            return handleNumber(0);
+        case "Backspace":
+            return undo();
+        case "Delete":
+            return clearScreen();
+        case "+":
+            return handleOperator("+");
+        case "-":
+            return handleOperator("-");
+        case "/":
+            return handleOperator("/");
+        case "*":
+            return handleOperator("*");
+        case "Enter":
+            return equals();
+        default:
+            return;
+    }
+})
 
 //backspace
 const btn_backspace = document.querySelector('#btn_backspace')
@@ -255,4 +301,5 @@ function equals()
     firstNumber = final;
     secondNumber = "";
     isOperatorPressed=false;
+    currentOperator = ""
 }
