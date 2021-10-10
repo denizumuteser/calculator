@@ -1,6 +1,7 @@
 body {
     height: 900px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -22,6 +23,8 @@ body {
     margin-bottom: 20px;
     width: 90%;
     height: 200px;
+    border: solid #FF9500 2px;
+    border-radius: 22px;
 }
 
 #upper-display {
@@ -41,6 +44,11 @@ body {
     padding-right: 20px;
 }
 
+#upper-text {
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
 #button-board {
     width: 400px;
     height: 100%;
@@ -57,6 +65,9 @@ body {
     width: 88px;
     height: 88px;
     border-radius: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button:hover {
@@ -72,6 +83,11 @@ body {
     width: 188px;
 }
 
+#btn_zero {
+    justify-content: left;
+    padding-left: 35px;
+}
+
 .orange {
     background-color: #FF9500;
 }
@@ -79,4 +95,8 @@ body {
 .grey {
     background-color: #D4D4D2;
     color: black;
+}
+
+footer {
+    margin-top: 20px;
 }

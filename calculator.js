@@ -9,7 +9,7 @@ let secondNumber = "";
 
 //math operators
 function add(a,b){return Number(a)+Number(b);}
-function subtract(a,b){return a- b;}
+function subtract(a,b){return a-b;}
 function multiply(a,b){return a*b;}
 function divide(a,b){return a/b;}
 
@@ -32,6 +32,7 @@ function operate(a, o ,b)
 
 function writeUpperScreen(string)
 {
+    
     uppertext.textContent = string;
 }
 
@@ -48,6 +49,7 @@ function clearScreen()
     firstNumber = "";
     secondNumber = "";
     isOperatorPressed = false;
+    lastpressedOperator = false;
 }
 
 function undo()
@@ -59,6 +61,13 @@ function undo()
         temp = "0";
     }
     lowertext.textContent = temp;
+    if (isOperatorPressed) {
+        secondNumber = temp;
+    }
+    else
+    {
+        firstNumber = temp;
+    }
 }
 
 //backspace
@@ -144,7 +153,8 @@ btn_zero.addEventListener('click', () => {
 //decimal
 const btn_decimal = document.querySelector('#btn_decimal')
 btn_decimal.addEventListener('click', () => {
-    console.log(firstNumber+","+ currentOperator + "," +secondNumber)
+    alert("not implemented yet")
+    //console.log(firstNumber+","+ currentOperator + "," +secondNumber)
 });
 //equal
 const btn_equal = document.querySelector('#btn_equal')
@@ -177,9 +187,18 @@ function handleNumber(num)
 
 function handleOperator(op)
 {   
-    if (firstNumber == "") {
+    if (firstNumber == "" && op!="-") {
         return;
     }
+    else if (firstNumber == "" && op == "-") {
+        firstNumber="-";
+        return;
+    }
+    else if (secondNumber == "" && op == "-" && currentOperator != "") {
+        secondNumber="-";
+        return;
+    }
+
     if (firstNumber!="" && secondNumber =="" && currentOperator != "") {
         currentOperator = op;
         //change current operator
@@ -231,6 +250,7 @@ function equals()
     //find expression
     writeUpperScreen(firstNumber + " " + currentOperator + " " + secondNumber + " =");
     let final = operate(firstNumber,currentOperator,secondNumber);
+    final = Math.round(final*100000000000)/100000000000
     writeLowerScreen(final);
     firstNumber = final;
     secondNumber = "";
